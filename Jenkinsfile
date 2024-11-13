@@ -1,5 +1,9 @@
 pipeline {
     agent any
+      tools {
+        jdk 'Java 21'  // Utilisez ici le nom de l'installation Java 21 dans Jenkins
+        maven 'Maven'  // Utilisez ici le nom de l'installation Maven dans Jenkins
+    }
     stages {
         stage('Clone Repository') {
             steps {
