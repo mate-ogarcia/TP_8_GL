@@ -19,13 +19,20 @@ pipeline {
                 bat 'mvn clean package'
             }
         }
+        stage('Test') {
+                    steps {
+                        sh 'mvn test'
+                    }
+                }
     }
     post {
         success {
-            echo 'Build successful!'
+            echo 'Build and tests successful!'
+            junit 'target/surefire-reports/*.xml' // Chemin par défaut où Maven enregistre les résultats des tests
         }
         failure {
-            echo 'Build failed.'
-        }   
+            echo 'Build or tests failed.'
+            junit 'target/surefire-reports/*.xml' // Même si le build échoue, publier les rapports
+        }
     }
 }
