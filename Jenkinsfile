@@ -5,6 +5,7 @@ pipeline {
         maven 'Maven'  // Utilisez ici le nom de l'installation Maven dans Jenkins
     }
     stages {
+        bat 'java -version'
         stage('Clone Repository') {
             steps {
                 // Cloner le dépôt GitHub
